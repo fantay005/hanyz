@@ -24,7 +24,7 @@ int main(void)
 	nvicConfigure();
 	gpioConfigure();
 	uart5Configure();
-	usart3Configure(19200);
+	usart3Configure(9600);
 	sysTickConfiguration();	
 	
 	IWDG_ReloadCounter();
