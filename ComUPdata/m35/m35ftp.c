@@ -77,9 +77,9 @@ bool m35FtpDownload(void)
 		sprintf(buf, "%02d%04d", i + 1, writein);		
 		ProtocolMessage("9999999999", "40", buf);
 
-		if (!m35AtChat(Frame_Buf, NULL, buf, 100)) return false;		
+		if (!m35AtChat(Frame_Buf, NULL, buf, 500)) return false;		
 		
-		m35ReceiveData(RecBuffer, writein, 5000);
+		m35ReceiveData(RecBuffer, writein, 8000);
 		STMFLASH_Write(Download_Store_Addr + i * 1024, (uint16_t *)RecBuffer, writein / 2);
 		i++;
 		leftLen -= writein;
