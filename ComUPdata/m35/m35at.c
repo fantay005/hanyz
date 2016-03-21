@@ -62,18 +62,18 @@ bool m35AtChat(const char *cmd, const char *responsePrefix, char *result, unsign
 	return true;
 }
 
-int m35ReceiveData(char *data, int len, int timeoutMs)
+bool m35ReceiveData(char *data, int len, int timeoutMs)
 {
 	int readLen = 0;
 
 	setDelayMs(timeoutMs);
 	while(readLen < len) {
-		if (isTimeout()) return readLen;
+		if (isTimeout()) return false;
 		if (m35SerialIsGotByte()) {
 			*data++ = m35SerialGetByte();
 //			USART_SendData(USART1, *(data-1));
 			readLen++;
 		}
 	}
-	return readLen;
+	return true;
 }
