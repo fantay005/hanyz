@@ -72,6 +72,8 @@ bool m35FtpDownload(void)
 
 	leftLen = __mark->SizeOfPAK;
 	
+	delayMs(10000);
+	
 	while(1){	
 		writein = (leftLen > WRITEIN_SIZE) ? WRITEIN_SIZE : leftLen;		
 		sprintf(buf, "%02d%04d", i + 1, writein);		
